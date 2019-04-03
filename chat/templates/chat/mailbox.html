@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{% static 'hplus/css/bootstrap.min14ed.css' %}" rel="stylesheet">
+    <link href="{% static 'hplus/css/font-awesome.min93e3.css' %} " rel="stylesheet">
+    <link href="{% static 'hplus/css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'hplus/css/plugins/iCheck/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'hplus/css/style.min862f.css' %}" rel="stylesheet">
+    <link href="{% static 'hplus/css/style4.1.0.css' %}" rel="stylesheet">
+    <title>主页</title>
+</head>
+<body>
+    <div class="mail-box-header">
+        <!--form method="get" class="pull-right mail-search">
+            <div class="input-group">
+                <input type="text" class="form-control input-sm" name="search" placeholder="搜索邮件标题，正文等">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        搜索
+                    </button>
+                </div>
+            </div>
+        </form-->
+        <h2>收件箱</h2>
+        <!--div class="mail-tools tooltip-demo m-t-md">
+            <div class="btn-group pull-right">
+                <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i>
+                </button>
+                <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="刷新邮件列表"><i class="fa fa-refresh"></i> 刷新</button>
+            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="标为已读"><i class="fa fa-eye"></i>
+            </button>
+            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为重要"><i class="fa fa-exclamation"></i>
+            </button>
+            <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为垃圾邮件"><i class="fa fa-trash-o"></i>
+            </button>
+        </div-->
+    </div>
+    <div class="mail-box">
+        <table class="table table-hover table-mail" id="table_list">
+            <tr class="read">
+                <td class="mail-ontact"><a href="mail_detail.html">发信人</a>
+                </td>
+                <td class="mail-subject"><a href="mail_detail.html">主题</a>
+                </td>
+                <td class="text-right mail-date">时间</td>
+            </tr>
+            {% for item in data %}
+            <tr class="read">
+                <!--td class="check-mail">
+                    <div class="icheckbox_square-green" style="position: relative;">
+                        <input type="checkbox" class="i-checks" checked="" style="position: absolute; opacity: 0;">
+                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                        </ins>
+                    </div>
+                </td-->
+                <td class="mail-ontact"><a href="/chat/mail_detail/{{ item.id }}/">{{ item.from}}</a>
+                </td>
+                <td class="mail-subject"><a href="/chat/mail_detail/{{ item.id }}/">{{ item.subject }}</a>
+                </td>
+                <td class="text-right mail-date">{{ item.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html> 

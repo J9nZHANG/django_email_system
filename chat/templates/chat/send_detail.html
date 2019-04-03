@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{% static 'hplus/css/bootstrap.min14ed.css' %}" rel="stylesheet">
+    <link href="{% static 'hplus/css/font-awesome.min93e3.css' %} " rel="stylesheet">
+    <link href="{% static 'hplus/css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'hplus/css/style.min862f.css' %}" rel="stylesheet">
+    <title>主页</title>
+</head>
+<body>
+    <div class="col-sm-9 animated fadeInRight">
+        <div class="mail-box-header">
+            <h2>
+            发件箱
+            </h2>
+            <div class="mail-tools tooltip-demo m-t-md">
+                <h3>
+                    <span class="font-noraml">主题： </span> {{ dictx.theme }}
+                </h3>
+                <h5>
+                    <span class="pull-right font-noraml">{{ dictx.time }}</span>
+                    <span class="font-noraml">收件人： </span>{{ dictx.sendto }}
+                </h5>
+            </div>
+        </div>
+        <div class="mail-box">
+            <div class="mail-body">
+                <p>
+                    {{ dictx.content }}
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</body>
+</html> 

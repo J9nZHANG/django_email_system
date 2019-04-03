@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<!--{% load static %}
+	<meta charset="utf-8" />
+-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'chat/css/reset.css' %}" />
+	<link rel="stylesheet" href="{% static 'chat/css/login.css' %}" />
+    <script type="text/javascript" src="{% static 'chat/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'chat/js/login.js' %}"></script>
+    <script type="text/javascript" src='{% static "chat/js/reconnecting-websocket.min.js" %}'></script>
+</head>
+<body>
+	<div class="page">
+		<div class="loginwarrp">
+			<div class="logo">用户登陆</div>
+			<div class="login_form">
+				<form id="Login" name="Login" method="post" action="/chat/loginVerify/">
+					{% csrf_token %}
+					<li class="login-item">
+						<span>用户名：</span>
+						<input type="text" id="username" name="username" class="login_input" >
+						<span id="count-msg" class="error"></span>
+					</li>
+					<li class="login-item">
+						<span>密　码：</span>
+						<input type="password" id="password" name="password" class="login_input" >
+						<span id="password-msg" class="error"></span>
+					</li>
+					<li class="login-sub">
+						<input type="submit" name="Submit" value="登录" />
+						<!--<input type="reset" name="Reset" value="注册" />  -->
+					</li>
+					<li class="register-">
+						<a href="{% url 'chat:register' %}">注册</a>
+					</li>                      
+				</form>
+				<script type="text/javascript">
+                	if ({{ error }}==1)
+                    	alert("用户名或密码错误！");
+            	</script>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

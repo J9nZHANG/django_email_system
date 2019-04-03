@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'chat/css/reset.css' %}" />
+	<link rel="stylesheet" href="{% static 'chat/css/login.css' %}" />
+    <script type="text/javascript" src="{% static 'chat/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'chat/js/login.js' %}"></script>
+    <title>注册</title>
+</head>
+<body>
+    <div class="page">
+    	<div class="loginwarrp">
+	    	<div class="logo">用户注册</div>
+	    	<div class="login_form">
+	    		<form method="post" action="/chat/registerVerify/">
+	    			{% csrf_token %}
+	    			<li class="login-item">
+						<span>用户名：</span>
+						<input type="text" id="username" name="username" class="login_input" >
+						<span id="count-msg" class="error"></span>
+					</li>
+					<li class="login-item">
+						<span>邮 箱：</span>
+						<input type="text" id="email" name="email" class="login_input" >
+					</li>
+					<li class="login-item">
+						<span>密　码：</span>
+						<input type="password" id="password" name="password" class="login_input" >
+					</li>
+					<li class="login-item">
+						<span>确认密码：</span>
+						<input type="password" id="confirm_password" name="confirm_password" class="login_input" >
+					</li>
+					<li class="login-sub">
+						<input type="submit" name="Submit" value="确认" />
+					</li>
+	    		</form>
+				<script type="text/javascript">
+                	if ({{ error }}==1)
+                    	alert("用户名已存在！");
+                    else if({{ error }} == 2)
+                    	alert("邮箱已存在");
+                    else if({{ error }} ==3)
+                    	alert("密码输入不一致");
+            	</script>
+	    	</div>
+		</div>
+    </div>
+</body>
+</html>

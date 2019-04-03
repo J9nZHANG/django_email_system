@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{% static 'hplus/css/bootstrap.min14ed.css' %}" rel="stylesheet">
+    <link href="{% static 'hplus/css/font-awesome.min93e3.css' %} " rel="stylesheet">
+    <link href="{% static 'hplus/css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'hplus/css/style.min862f.css' %}" rel="stylesheet">
+    <title>主页</title>
+</head>
+<body>
+<div class="col-sm-9 animated fadeInRight">
+    <div class="mail-box-header">
+        <h2>
+        查看邮件
+        </h2>
+        <div class="mail-tools tooltip-demo m-t-md">
+            <h3>
+                <span class="font-noraml">主题： </span> {{ dictx.subject }}
+            </h3>
+            <h5>
+                <span class="pull-right font-noraml">{{ dictx.date }}</span>
+                <span class="font-noraml">发件人： </span>{{ dictx.from }}
+            </h5>
+        </div>
+    </div>
+    <div class="mail-box">
+        <div class="mail-body">
+            <p>
+                {{ dictx.content }}
+            </p>
+        </div>
+        <div class="mail-attachment">
+            <p>
+                <span><i class="fa fa-paperclip"></i> {{ dictx.count }} 个附件 - </span>
+            </p>
+            <div class="attachment">
+                {% for item in dictx.file %}
+                <div class="file-box">
+                    <div class="file">
+                        <a>
+                            <span class="corner"></span>
+                            <div class="icon">
+                                <i class="fa fa-file"></i>
+                            </div>
+                            <div class="file-name">
+                                {{ item }}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</body>
+</html> 

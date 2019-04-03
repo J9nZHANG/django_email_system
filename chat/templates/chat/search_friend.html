@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'chat/css/reset.css' %}" />
+	<link rel="stylesheet" href="{% static 'chat/css/change.css' %}" />
+    <script type="text/javascript" src="{% static 'chat/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'chat/js/login.js' %}"></script>
+    <title>查找联系人</title>
+</head>
+<body>
+	<div class="page">
+    	<div class="loginwarrp">
+	    	<div class="logo">查找联系人</div>
+	    	<div class="login_form">
+	    		<form method="post" action="/chat/search_friend/">
+	    			{% csrf_token %}
+	    			<li class="login-item">
+						<span>用户名：</span>
+						<input type="text" id="username" name="username" class="login_input">
+					</li>
+					<li class="login-sub">
+						<input type="submit" name="Submit" value="确认" />
+					</li>
+	    		</form>
+	    		<script type="text/javascript">
+                	if ({{ error }}==1)
+                    	alert("未找到联系人");
+                   	if ({{ succeed }}==1)
+                   		alert("添加成功");
+            	</script>
+	    	</div>
+		</div>
+    </div>
+</body>
+</html> 
